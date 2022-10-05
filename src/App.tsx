@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import { Button, Stack } from 'react-bootstrap';
+import BudgetCard from './components/BudgetCard';
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Container>
+      <Stack direction="horizontal" gap="2" className="mb-4">
+        <h1 className="me-auto">Budgets</h1>
+        <Button variant="primary">Add Budget</Button>
+        <Button variant="outline-primary">Add Expense</Button>
+      </Stack>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+          gap: '1rem',
+          alignItems: 'flex-start',
+        }}
+      >
+        <BudgetCard
+          name={'Entertainment'}
+          ammount={800}
+          max={1000}
+        ></BudgetCard>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    </Container>
+  );
 }
 
-export default App
+export default App;
